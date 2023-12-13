@@ -20,7 +20,7 @@ public class Amount {
     }
 
     private void validateRange(int amount) {
-        if (amount < 0) {
+        if (amount <= 0) {
             throw new IllegalArgumentException(AMOUNT_OUT_OF_RANGE.getMessage());
         }
     }
