@@ -4,26 +4,28 @@ import static lotto.domain.Lotto.isInvalidRange;
 import static lotto.util.ErrorMessage.DUPLICATE_NUMBER_EXISTS;
 import static lotto.util.ErrorMessage.NUMBER_OUT_OF_RANGE;
 
-public class Answer {
-    private final Lotto winningNumber;
+public class BonusNumber {
     private final int bonusNumber;
 
-    public Answer(Lotto winningNumber, int bonusNumber) {
+    public BonusNumber(Lotto winningLotto, int bonusNumber) {
         validateRange(bonusNumber);
-        validateNoOverlap(winningNumber, bonusNumber);
-        this.winningNumber = winningNumber;
+        validateNoOverlap(winningLotto, bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
-    public static void validateRange(int bonusNumber) {
+    private static void validateRange(int bonusNumber) {
         if (isInvalidRange(bonusNumber)) {
             throw new IllegalArgumentException(NUMBER_OUT_OF_RANGE.getMessage());
         };
     }
 
-    private void validateNoOverlap(Lotto winningNumber, int bonusNumber) {
-        if (winningNumber.isDuplicated(bonusNumber)) {
+    private void validateNoOverlap(Lotto winningLotto, int bonusNumber) {
+        if (winningLotto.contains(bonusNumber)) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER_EXISTS.getMessage());
         }
+    }
+
+    public boolean isSame(int number) {
+        return bonusNumber == number;
     }
 }
