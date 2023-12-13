@@ -36,10 +36,19 @@ public class Lotto {
 
     private void validateRange(List<Integer> numbers) {
         numbers.stream()
-                .filter(number -> number < MIN_NUMBER || number > MAX_NUMBER)
+                .filter(Lotto::isInvalidRange)
                 .findAny()
                 .ifPresent(outOfRange -> {
                     throw new IllegalArgumentException(NUMBER_OUT_OF_RANGE.getMessage());
                 });
+    }
+
+    public static boolean isInvalidRange(int number) {
+        return number < MIN_NUMBER || number > MAX_NUMBER;
+    }
+
+    public boolean isDuplicated(int bonusNumber) {
+        return numbers.stream()
+                .anyMatch(number -> number == bonusNumber);
     }
 }
