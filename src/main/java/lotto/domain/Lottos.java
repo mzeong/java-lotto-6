@@ -1,23 +1,23 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import lotto.util.RandomNumberGenerator;
 
 public class Lottos {
-    private final Amount amount;
-    private final RandomNumberGenerator randomNumberGenerator;
     private final List<Lotto> lottos;
 
-    public Lottos(Amount amount, RandomNumberGenerator randomNumberGenerator) {
-        this.amount = amount;
-        this.randomNumberGenerator = randomNumberGenerator;
-        this.lottos = createLottos();
-    }
-
-    private List<Lotto> createLottos() {
-        return IntStream.range(0, amount.calculateLottoCount())
+    public Lottos(int count, RandomNumberGenerator randomNumberGenerator) {
+        this.lottos = IntStream.range(0, count)
                 .mapToObj(i -> new Lotto(randomNumberGenerator.generate()))
                 .toList();
+    }
+
+    @Override
+    public String toString() {
+        return lottos.stream()
+                .map(Lotto::toString)
+                .collect(Collectors.joining(System.lineSeparator()));
     }
 }

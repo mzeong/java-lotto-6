@@ -2,8 +2,11 @@ package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import lotto.domain.Amount;
 import lotto.domain.Answer;
 import lotto.domain.Lotto;
+import lotto.domain.Lottos;
+import lotto.util.RandomNumberGenerator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -19,17 +22,23 @@ public class Controller {
     }
 
     public void init() {
-        int amount = getAmount();
+        Amount amount = getAmount();
+
+        int count = amount.calculateLottoCount();
+        Lottos lottos = new Lottos(count, new RandomNumberGenerator());
+        outputView.printLottoCount(count);
+        outputView.printLottos(lottos);
+
         Lotto winningNumber = getWinningNumber();
         Answer answerNumber = getBonusNumber(winningNumber);
 
         Console.close();
     }
 
-    private int getAmount() {
+    private Amount getAmount() {
         while (true) {
             try {
-                return parser.parseAmount(inputView.inputAmount());
+                return new Amount(parser.parseAmount(inputView.inputAmount()));
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }

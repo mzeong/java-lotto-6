@@ -49,9 +49,8 @@ public class Lotto {
         return number < MIN_NUMBER || number > MAX_NUMBER;
     }
 
-    public boolean isDuplicated(int bonusNumber) {
-        return numbers.stream()
-                .anyMatch(number -> number == bonusNumber);
+    public boolean contains(int number) {
+        return numbers.contains(number);
     }
 
     @Override
