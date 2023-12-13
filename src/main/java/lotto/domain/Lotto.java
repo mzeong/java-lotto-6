@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import static lotto.util.ErrorMessage.DUPLICATE_NUMBER_EXISTS;
+import static lotto.util.ErrorMessage.NUMBER_OUT_OF_RANGE;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         validateNoOverlap(numbers);
+        validateRange(numbers);
         this.numbers = numbers;
     }
 
@@ -28,5 +30,14 @@ public class Lotto {
         if (distinctNumbers.size() != numbers.size()) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER_EXISTS.getMessage());
         }
+    }
+
+    private void validateRange(List<Integer> numbers) {
+        numbers.stream()
+                .filter(number -> number < MIN_NUMBER || number > MAX_NUMBER)
+                .findAny()
+                .ifPresent(outOfRange -> {
+                    throw new IllegalArgumentException(NUMBER_OUT_OF_RANGE.getMessage());
+                });
     }
 }
