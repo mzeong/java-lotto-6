@@ -24,4 +24,8 @@ public class Amount {
             throw new IllegalArgumentException(AMOUNT_OUT_OF_RANGE.getMessage());
         }
     }
+
+    public int calculateLottoCount() {
+        return amount / UNIT;
+    }
 }
