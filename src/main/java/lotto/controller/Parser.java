@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import static lotto.util.ErrorMessage.AMOUNT_IS_NOT_NUMBER;
+import static lotto.util.ErrorMessage.BONUS_NUMBER_IS_NOT_NUMBER;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,5 +24,13 @@ public class Parser {
                 .filter(str -> str.matches(IS_INTEGER))
                 .map(Integer::parseInt)
                 .toList();
+    }
+
+    public int parseBonusNumber(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(BONUS_NUMBER_IS_NOT_NUMBER.getMessage());
+        }
     }
 }
