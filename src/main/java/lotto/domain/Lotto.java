@@ -53,6 +53,17 @@ public class Lotto {
         return numbers.contains(number);
     }
 
+    public boolean hasMatched(BonusNumber bonusNumber) {
+        return numbers.stream()
+                .anyMatch(bonusNumber::isSame);
+    }
+
+    public int calculateMatchCount(Lotto winningNumber) {
+        return (int) numbers.stream()
+                .filter(winningNumber::contains)
+                .count();
+    }
+
     @Override
     public String toString() {
         return numbers.toString();
