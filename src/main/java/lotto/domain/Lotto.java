@@ -16,7 +16,9 @@ public class Lotto {
         validate(numbers);
         validateNoOverlap(numbers);
         validateRange(numbers);
-        this.numbers = numbers;
+        this.numbers = numbers.stream()
+                .sorted()
+                .toList();
     }
 
     private void validate(List<Integer> numbers) {
@@ -50,5 +52,10 @@ public class Lotto {
     public boolean isDuplicated(int bonusNumber) {
         return numbers.stream()
                 .anyMatch(number -> number == bonusNumber);
+    }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
     }
 }

@@ -9,9 +9,6 @@ public class RandomNumberGenerator {
     private static final int COUNT = 6;
 
     public List<Integer> generate() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, COUNT);
-        return numbers.stream()
-                .sorted()
-                .toList();
+        return Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, COUNT);
     }
 }
