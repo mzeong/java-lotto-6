@@ -28,4 +28,8 @@ public class Amount {
     public int calculateLottoCount() {
         return amount / UNIT;
     }
+
+    public double calculateProfitRate(int profit) {
+        return (double) profit / amount * 100;
+    }
 }
