@@ -1,8 +1,5 @@
 package lotto.domain;
 
-import java.util.Arrays;
-import java.util.EnumMap;
-
 public enum Rank {
     OUT_OF_RANK(0, false, 0),
     FIFTH(3, false, 5_000),
@@ -11,6 +8,7 @@ public enum Rank {
     SECOND(5, true, 30_000_000),
     FIRST(6, false, 2_000_000_000);
 
+    public static final Rank[] VALUES = values();
     private final int matchCount;
     private final boolean hasMatched;
     private final int prize;

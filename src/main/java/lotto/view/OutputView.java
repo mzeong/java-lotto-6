@@ -20,9 +20,28 @@ public class OutputView {
         String collect = result.entrySet()
                 .stream()
                 .filter(entry -> entry.getKey() != Rank.OUT_OF_RANK)
-                .map(entry -> entry.getKey().toString() + " - " + entry.getValue() + "개")
+                .map(entry -> printRank(entry.getKey()) + " - " + entry.getValue() + "개")
                 .collect(Collectors.joining("\n"));
         System.out.println(collect);
+    }
+
+    private String printRank(Rank rank) {
+        return printMatchCount(rank.getMatchCount()) + printHasMatched(rank.isHasMatched()) + printPrize(rank.getPrize());
+    }
+
+    private String printMatchCount(int matchCount) {
+        return String.format("%d개 일치", matchCount);
+    }
+
+    private Object printHasMatched(boolean hasMatched) {
+        if (hasMatched) {
+            return ", 보너스 볼 일치";
+        }
+        return "";
+    }
+
+    private Object printPrize(int prize) {
+        return String.format(" (%,d원)", prize);
     }
 
     public void printProfitRate(double profitRate) {

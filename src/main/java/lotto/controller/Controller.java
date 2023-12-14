@@ -1,9 +1,12 @@
 package lotto.controller;
 
+import java.util.EnumMap;
 import lotto.domain.BonusNumber;
+import lotto.domain.Calculator;
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
 import lotto.domain.Money;
+import lotto.domain.Rank;
 import lotto.util.RandomGenerator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -27,6 +30,11 @@ public class Controller {
 
         Lotto winningLotto = getWinningLotto();
         BonusNumber bonusNumber = getBonusNumber(winningLotto);
+        Calculator calculator = new Calculator(lottos, winningLotto, bonusNumber, money);
+        EnumMap<Rank, Integer> result = calculator.calculateResult();
+        Double profitRate = calculator.calculateProfitRate();
+        outputView.printResult(result);
+        outputView.printProfitRate(profitRate);
     }
 
     private Money getAmount() {
