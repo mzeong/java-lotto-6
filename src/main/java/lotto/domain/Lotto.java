@@ -9,7 +9,9 @@ public class Lotto {
         validate(numbers);
         validateDuplicate(numbers);
         validateRange(numbers);
-        this.numbers = numbers;
+        this.numbers = numbers.stream()
+                .sorted()
+                .toList();
     }
 
     private void validate(List<Integer> numbers) {
