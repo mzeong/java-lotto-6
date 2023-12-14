@@ -5,6 +5,7 @@ public class Money {
 
     public Money(int amount) {
         validateUnit(amount);
+        validateRange(amount);
         this.amount = amount;
     }
 
@@ -14,5 +15,9 @@ public class Money {
         }
     }
 
-
+    private void validateRange(int amount) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("구입 금액은 0 이하일 수 없습니다.");
+        }
+    }
 }
