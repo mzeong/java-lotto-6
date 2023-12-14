@@ -21,7 +21,15 @@ public class Money {
         }
     }
 
-    public int calculateCount() {
-        return amount / 1000;
+    public int getAmount() {
+        return amount;
     }
+
+//    public int calculateCount() {
+//        return amount / 1000;
+//    }
+//
+//    public double calculateProfitRate(int profit) {
+//        return (double) profit / amount * 100;
+//    }
 }
