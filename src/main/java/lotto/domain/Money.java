@@ -1,6 +1,7 @@
 package lotto.domain;
 
 public class Money {
+    public static final int UNIT = 1000;
     private final int amount;
 
     public Money(int amount) {
@@ -10,7 +11,7 @@ public class Money {
     }
 
     private void validateUnit(int amount) {
-        if (amount % 1000 != 0) {
+        if (amount % UNIT != 0) {
             throw new IllegalArgumentException("구입 금액은 1,000원 단위로 입력해야 합니다.");
         }
     }
@@ -25,10 +26,10 @@ public class Money {
         return amount;
     }
 
-//    public int calculateCount() {
-//        return amount / 1000;
-//    }
-//
+    public int getCount() {
+        return amount / UNIT;
+    }
+
 //    public double calculateProfitRate(int profit) {
 //        return (double) profit / amount * 100;
 //    }

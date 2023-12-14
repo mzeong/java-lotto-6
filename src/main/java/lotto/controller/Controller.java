@@ -2,7 +2,9 @@ package lotto.controller;
 
 import lotto.domain.BonusNumber;
 import lotto.domain.Lotto;
+import lotto.domain.Lottos;
 import lotto.domain.Money;
+import lotto.util.RandomGenerator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -19,7 +21,10 @@ public class Controller {
     }
 
     public void run() {
-        Money amount = getAmount();
+        Money money = getAmount();
+        Lottos lottos = new Lottos(new RandomGenerator(), money);
+        outputView.printLottos(money, lottos);
+
         Lotto winningLotto = getWinningLotto();
         BonusNumber bonusNumber = getBonusNumber(winningLotto);
     }
