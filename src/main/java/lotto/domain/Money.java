@@ -29,8 +29,4 @@ public class Money {
     public int getCount() {
         return amount / UNIT;
     }
-
-//    public double calculateProfitRate(int profit) {
-//        return (double) profit / amount * 100;
-//    }
 }

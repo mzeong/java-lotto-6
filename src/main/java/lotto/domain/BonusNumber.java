@@ -17,7 +17,7 @@ public class BonusNumber {
 
     private void validateDuplicate(int bonusNumber, Lotto winningLotto) {
         if (winningLotto.getNumbers().contains(bonusNumber)) {
-            throw new IllegalArgumentException("당첨 번호와 중복됩니다.");
+            throw new IllegalArgumentException("당첨 번호와 중복입니다.");
         }
     }
 

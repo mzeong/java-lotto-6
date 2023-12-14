@@ -41,23 +41,4 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return numbers;
     }
-
-//    public int compare(Lotto winningLotto) {
-//        return (int) numbers.stream()
-//                .filter(winningLotto::contains)
-//                .count();
-//    }
-//
-//    private boolean contains(int number) {
-//        return numbers.contains(number);
-//    }
-//
-//    public boolean compare(BonusNumber bonusNumber) {
-//        return numbers.contains(bonusNumber.getBonusNumber());
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return numbers.toString();
-//    }
 }
