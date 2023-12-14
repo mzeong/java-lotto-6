@@ -32,7 +32,7 @@ public class Controller {
         BonusNumber bonusNumber = getBonusNumber(winningLotto);
         Calculator calculator = new Calculator(lottos, winningLotto, bonusNumber, money);
         EnumMap<Rank, Integer> result = calculator.calculateResult();
-        Double profitRate = calculator.calculateProfitRate();
+        Double profitRate = calculator.calculateProfitRate(result);
         outputView.printResult(result);
         outputView.printProfitRate(profitRate);
     }
@@ -66,25 +66,4 @@ public class Controller {
             }
         }
     }
-
-    //    public void run() {
-//        List<Category> amount = getAmount();
-////        List<Integer> integers = parser.parseComma("1,2, 3, 4, 5");
-//        System.out.println(amount);
-//        System.out.println(amount.size());
-////        System.out.println();
-////        Money money = getAmount();
-////        int count = money.calculateCount();
-////        Lottos lottos = new Lottos(new RandomGenerator(), count);
-////        outputView.printLottos(count, lottos);
-////
-////        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-////        BonusNumber bonusNumber = new BonusNumber(7);
-////
-////        EnumMap<Rank, Integer> result = lottos.compareAll(winningLotto, bonusNumber);
-////        int profit = Rank.calculateProfit(result);
-////        double profitRate = money.calculateProfitRate(profit);
-////        outputView.printResult(result);
-////        outputView.printProfitRate(profitRate);
-//    }
 }

@@ -46,7 +46,10 @@ public class Calculator {
                 .findFirst()
                 .orElse(Rank.OUT_OF_RANK);
     }
-    public Double calculateProfitRate() {
-        return 1.1;
+    public Double calculateProfitRate(EnumMap<Rank, Integer> result) {
+        int profit = result.entrySet().stream()
+                .mapToInt(entry -> entry.getKey().getPrize() * entry.getValue())
+                .sum();
+        return (double) profit / money.getAmount() * 100;
     }
 }
