@@ -20,4 +20,8 @@ public class Money {
             throw new IllegalArgumentException("구입 금액은 0 이하일 수 없습니다.");
         }
     }
+
+    public int calculateCount() {
+        return amount / 1000;
+    }
 }
